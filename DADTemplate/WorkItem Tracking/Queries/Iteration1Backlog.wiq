@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WorkItemQuery Version="1">
+  <Wiql>
+    SELECT [System.Id],
+           [System.WorkItemType],
+           [System.Title],
+           [System.State],
+           [System.AssignedTo],
+           [Microsoft.VSTS.Scheduling.RemainingWork],
+           [Microsoft.VSTS.Scheduling.CompletedWork],
+           [Microsoft.VSTS.Scheduling.StoryPoints],
+           [Microsoft.VSTS.Common.StackRank],
+           [Microsoft.VSTS.Common.Priority],
+           [Microsoft.VSTS.Common.Activity],
+           [System.IterationPath],
+           [System.AreaPath]
+      FROM WorkItemLinks
+     WHERE Source.[System.TeamProject] = @project
+       AND Source.[System.WorkItemType] IN GROUP 'Microsoft.RequirementCategory'
+       AND Source.[System.IterationPath] UNDER @project
+       AND Source.[System.State] IN ('New','Active','Resolved','Closed')
+       AND Source.[System.AreaPath] UNDER @project
+       AND [System.Links.LinkType] = 'System.LinkTypes.Hierarchy-Forward'
+       AND (
+               (Target.[System.WorkItemType] IN GROUP 'Microsoft.TaskCategory'
+               AND Target.[System.IterationPath] UNDER '$$PROJECTNAME$$\Construction'
+               AND Target.[System.State] IN ('New','Active','Closed')
+               AND Target.[System.AreaPath] UNDER @project)
+               OR
+               (Target.[System.WorkItemType] IN GROUP 'Microsoft.RequirementCategory'
+               AND Target.[System.IterationPath] UNDER '$$PROJECTNAME$$\Construction'
+               AND Target.[System.State] IN ('New','Active','Resolved','Closed')
+               AND Target.[System.AreaPath] UNDER @project)
+           )
+  ORDER BY [Microsoft.VSTS.Common.StackRank] ASC,[System.Id] ASC
+      MODE (Recursive, ReturnMatchingChildren)
+  </Wiql>
+</WorkItemQuery>
