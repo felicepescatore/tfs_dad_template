@@ -4,7 +4,7 @@
     <name>Disciplined Agile Delivery Solution Delivery Process</name>
     <description>This template is based upon the Disciplined Agile Delivery framework created 
 	by Scott Ambler and Mark Lines.</description>
-    <version type="ADCC42AB-9882-485E-A3ED-7678F01F66BC" major="7" minor="17" />
+    <version type="b716b186-263d-4719-bd5d-23f891a4efd0" major="7" minor="17" />
     <plugins>
       <plugin name="Microsoft.ProjectCreationWizard.Classification" wizardPage="false" />
       <plugin name="Microsoft.ProjectCreationWizard.Reporting" wizardPage="false" />
