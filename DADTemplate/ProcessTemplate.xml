@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ProcessTemplate>
   <metadata>
-    <name>Disciplined Agile Delivery Solution Delivery Process</name>
+    <name>Disciplined Agile Delivery Solution Delivery Process for TFS 2015</name>
     <description>This template is based upon the Disciplined Agile Delivery framework created 
 	by Scott Ambler and Mark Lines.</description>
     <version type="b716b186-263d-4719-bd5d-23f891a4efd0" major="7" minor="17" />
